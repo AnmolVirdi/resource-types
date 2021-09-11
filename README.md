@@ -45,7 +45,6 @@ Resource types can be submitted directly to this repo through a fork-and-PR work
     - The container image of the resource type exits.
 1. When a maintainer accepts your changes, they will merge your pull request.
 
-
 ## Where to get help
 There are two main channels that the Concourse community uses for getting help and discussing potential changes.
   1. Get help in Discord in the #resource-types channel. [Click here](https://discord.gg/MeRxXKW) to get access.
