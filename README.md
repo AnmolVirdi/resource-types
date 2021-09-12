@@ -20,7 +20,6 @@ Resource types can be submitted directly to this repo through a fork-and-PR work
 
     Follow the schema: `[OWNER_NAME]-[RESOURCE_TYPE_NAME].yml` for file name (e.g. concourse-git-resource.yml)
     ```
-    ...
     /README.md
     /your-new-yaml.yml
     ...
