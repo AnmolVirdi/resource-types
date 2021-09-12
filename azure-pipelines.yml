@@ -1,0 +1,43 @@
+trigger:
+- master
+
+pool: abhi
+
+stages:
+- stage: Check
+  jobs:
+  - job: codeCheck
+    steps:
+    - script: |
+              git clone https://github.com/AnmolVirdi/resource-types-website
+              cd resource-types-website
+              git submodule init
+              git submodule update --remote warehouse/resource-types
+
+- stage: Test
+  jobs:
+  - job: testing_Backend
+    steps:
+        - script: |
+              cd warehouse
+              ginkgo -r -keepGoing .
+              cd ..
+  - job: testing_Frontend
+    steps:
+        - script: |
+              cd warehouse && yarn install && yarn test
+              cd ..
+- stage: Build
+  jobs:
+  - job: PushingImagetoHeroku
+    steps:
+        - script: |
+              heroku container:login
+              heroku container:push web --app intense-wave-04461
+
+- stage: Release
+  jobs:
+  - job: ReleasingContainer
+    steps:
+      - script: |
+              heroku container:release web --app intense-wave-04461
