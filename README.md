@@ -24,7 +24,6 @@ Resource types can be submitted directly to this repo through a fork-and-PR work
     /README.md
     /your-new-yaml.yml
     ...
-    ```
 
 1. Populate your file with the resource type name, repo url and the description of the resource type. For example:
     ```yaml
