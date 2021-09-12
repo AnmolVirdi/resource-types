@@ -19,19 +19,20 @@ stages:
   - job: testing_Backend
     steps:
         - script: |
-              cd warehouse
+              cd resource-types-website/warehouse/
               ginkgo -r -keepGoing .
               cd ..
   - job: testing_Frontend
     steps:
         - script: |
-              cd warehouse && yarn install && yarn test
+              cd resource-types-website/warehouse && yarn install && yarn test
               cd ..
 - stage: Build
   jobs:
   - job: PushingImagetoHeroku
     steps:
         - script: |
+              cd resource-types-website/
               heroku container:login
               heroku container:push web --app intense-wave-04461
 
@@ -40,4 +41,5 @@ stages:
   - job: ReleasingContainer
     steps:
       - script: |
+              cd resource-types-website/
               heroku container:release web --app intense-wave-04461
